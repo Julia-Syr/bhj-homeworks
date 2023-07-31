@@ -1,5 +1,6 @@
 const book = document.querySelector('.book');
 const controls = document.querySelector('.book__control');
+const fontSize = document.querySelectorAll('.font-size');
 
 for (let control of controls.children) {
     control.addEventListener('click', changeFont);
@@ -7,6 +8,7 @@ for (let control of controls.children) {
 
 function changeFont(event) {
     event.preventDefault();
+    fontSize.forEach(item => item.classList.remove('font-size_active'));
     if (event.target.dataset.size === 'big') {
         book.classList.add('book_fs-big');
         book.classList.remove('book_fs-small'); 
@@ -17,10 +19,5 @@ function changeFont(event) {
         book.classList.remove('book_fs-small'); 
         book.classList.remove('book_fs-big');
     }
-
-    for (let letter of document.querySelectorAll('.font.size')) {
-        letter.classList.remove('font-size_active');
-    }
-
     event.target.classList.add('font-size_active');
 }
